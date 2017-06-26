@@ -47,6 +47,7 @@ tests:
     - base
     - pep
     - tasty
+    - tasty-auto
     - tasty-hspec
     - tasty-hunit
     - tasty-quickcheck
