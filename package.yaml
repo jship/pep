@@ -1,0 +1,60 @@
+benchmarks:
+  pep-benchmarks:
+    dependencies:
+    - base
+    - pep
+    - criterion
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: benchmark
+category: Reverse Engineering
+description: Parser for the Portable Executable format (.exe/.dll).
+executables:
+  pep:
+    dependencies:
+    - base
+    - pep
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: executable
+extra-source-files:
+- CHANGELOG.md
+- LICENSE.md
+- package.yaml
+- README.md
+- stack.yaml
+ghc-options: -Wall
+github: jship/pep
+library:
+  dependencies:
+  - autoexporter
+  - base
+  - cereal
+  source-dirs: library
+license: MIT
+maintainer: Jason Shipman
+name: pep
+synopsis: Portable Executable parser.
+tests:
+  pep-test-suite:
+    dependencies:
+    - base
+    - pep
+    - tasty
+    - tasty-hspec
+    - tasty-hunit
+    - tasty-quickcheck
+    - tasty-smallcheck
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: test-suite
+version: '0.0.0'
