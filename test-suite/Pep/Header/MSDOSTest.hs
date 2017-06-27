@@ -8,7 +8,7 @@ import Pep.Header.MSDOS
 import qualified Data.ByteString as ByteString
 import qualified Data.Serialize as Cereal
 
-import Test.Tasty.QuickCheck (Arbitrary, arbitrary, vector)
+import Test.Tasty.QuickCheck (Arbitrary(..), vector)
 
 prop_Round_trip_for_MSDOS_Stub :: MsDosStub -> Bool
 prop_Round_trip_for_MSDOS_Stub msDosStub =
