@@ -4,7 +4,6 @@ import Pep.Header.Signature
 
 import qualified Data.ByteString as ByteString
 import qualified Data.Serialize as Cereal
-
 import Test.Tasty.HUnit ((@?=))
 
 case_Round_trip_for_PE_signature :: IO ()
