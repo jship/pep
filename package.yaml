@@ -35,6 +35,7 @@ library:
   dependencies:
   - autoexporter
   - base
+  - bytestring
   - cereal
   source-dirs: library
 license: MIT
@@ -45,7 +46,10 @@ tests:
   pep-test-suite:
     dependencies:
     - base
+    - bytestring
+    - cereal
     - pep
+    - quickcheck-instances
     - tasty
     - tasty-auto
     - tasty-hspec
