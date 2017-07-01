@@ -37,6 +37,7 @@ library:
   - base
   - bytestring
   - cereal
+  - directory
   source-dirs: library
 license: MIT
 maintainer: Jason Shipman
