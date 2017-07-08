@@ -15,7 +15,7 @@ data Magic = PE32
 instance Serialize Magic where
   get = do
     magic <- toMagic <$> Cereal.getWord16le
-    maybe (fail "Magic number in optional header is invalid") pure magic
+    maybe (fail "Magic number in optional header's standard fields is invalid") pure magic
 
   put = Cereal.putWord16le . fromMagic
 

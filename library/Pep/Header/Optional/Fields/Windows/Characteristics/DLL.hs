@@ -26,7 +26,7 @@ instance Serialize DllCharacteristics where
             (repeat characteristics)
     if hasADllCharacteristic
     then pure characteristics
-    else fail "Invalid COFF header characteristics"
+    else fail "Invalid optional header Windows fields DLL characteristics"
 
   put = Cereal.putWord16le . dllCharacteristicsBytes
 
