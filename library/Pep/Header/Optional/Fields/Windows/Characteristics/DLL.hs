@@ -14,7 +14,6 @@ newtype DllCharacteristics = DllCharacteristics
   { dllCharacteristicsBytes :: Word16
   } deriving (Eq, Show)
 
-
 instance Serialize DllCharacteristics where
   get = do
     characteristics <- DllCharacteristics <$> Cereal.getWord16le
