@@ -15,17 +15,7 @@ newtype DllCharacteristics = DllCharacteristics
   } deriving (Eq, Show)
 
 instance Serialize DllCharacteristics where
-  get = do
-    characteristics <- DllCharacteristics <$> Cereal.getWord16le
-    let hasADllCharacteristic = or $
-          zipWith
-            ($)
-            (fmap hasDllCharacteristic
-              [(minBound :: DllCharacteristic) .. (maxBound :: DllCharacteristic)])
-            (repeat characteristics)
-    if hasADllCharacteristic
-    then pure characteristics
-    else fail "Invalid optional header Windows fields DLL characteristics"
+  get = DllCharacteristics <$> Cereal.getWord16le
 
   put = Cereal.putWord16le . dllCharacteristicsBytes
 
