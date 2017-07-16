@@ -9,7 +9,7 @@ import Data.Bits ((.|.), bit)
 import Data.Foldable (foldl')
 import qualified Data.Serialize as Cereal
 import Test.Tasty.QuickCheck
-       (Arbitrary(..), Gen, Positive(..), arbitraryBoundedEnum)
+       (Arbitrary(..), Positive(..), elements)
 
 prop_Round_trip_for_COFF_characteristics :: Characteristics -> Bool
 prop_Round_trip_for_COFF_characteristics characteristics =
@@ -18,7 +18,7 @@ prop_Round_trip_for_COFF_characteristics characteristics =
 instance Arbitrary Characteristics where
   arbitrary = do
     Positive count <- arbitrary
-    flags <- Monad.replicateM count (arbitraryBoundedEnum :: Gen Characteristic)
-    let intFlags = fmap (bit . fromEnum) flags
+    intFlags <- fmap bit <$> Monad.replicateM count
+                  (elements [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15])
     let bytes = foldl' (.|.) 0 intFlags
     pure $ Characteristics bytes
