@@ -6,15 +6,17 @@ module Pep.PE
 
 import Pep.Header.COFF
 import Pep.Header.MSDOS
+import Pep.Header.Optional
 import Pep.Header.Signature
 
 import Data.Serialize (Serialize)
 import qualified Data.Serialize as Cereal
 
 data Pe = Pe
-  { psMsDosStub  :: !MsDosStub
-  , peSignature  :: !PeSignature
-  , peCoffHeader :: !CoffHeader
+  { psMsDosStub      :: !MsDosStub
+  , peSignature      :: !PeSignature
+  , peCoffHeader     :: !CoffHeader
+  , peOptionalHeader :: !OptionalHeader
   } deriving (Eq, Show)
 
 instance Serialize Pe where
@@ -22,9 +24,11 @@ instance Serialize Pe where
     psMsDosStub <- Cereal.get
     peSignature <- Cereal.get
     peCoffHeader <- Cereal.get
+    peOptionalHeader <- Cereal.get
     pure $ Pe{..}
 
   put Pe{..} = do
     Cereal.put psMsDosStub
     Cereal.put peSignature
     Cereal.put peCoffHeader
+    Cereal.put peOptionalHeader

@@ -6,6 +6,7 @@ import Pep.PE
 
 import Pep.Header.COFFTest ()
 import Pep.Header.MSDOSTest ()
+import Pep.Header.OptionalTest ()
 import Pep.Header.SignatureTest ()
 
 import qualified Data.Serialize as Cereal
@@ -17,5 +18,6 @@ prop_Round_trip_for_PE pe =
 
 instance Arbitrary Pe where
   arbitrary = Pe <$> arbitrary
+                 <*> arbitrary
                  <*> arbitrary
                  <*> arbitrary
